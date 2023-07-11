@@ -77,9 +77,9 @@ ActiveSheet.DisplayPageBreaks = False
 '--------------------------------------------------------------
 'calculate Pmax
     c = 10000000000#
-    tempCc = Cc(fc, c, pointE, pointF2s, pointF3s) 'staring index 1
-    tempCs = Cs(fc, fy, c, pointE, rcoord, sizer) 'starting index 0
-    tempTs = Ts(fy, c, pointE, rcoord, sizer) 'starting index 1
+    tempCc = Cc(fc, c, pointE, pointF2s, pointF3s) 
+    tempCs = Cs(fc, fy, c, pointE, rcoord, sizer) 
+    tempTs = Ts(fy, c, pointE, rcoord, sizer) 
     Pmax = tempCc(1)
     For j = 1 To Nr
         Pmax = Pmax + tempCs(j, 2) - tempTs(j, 2)
@@ -183,7 +183,7 @@ Function transformedsection(D1 As Double, B2 As Double, ByVal theta0 As Double)
 '   pointE(cm,Double) - dimension of transformed section in dir.(2)
 '   pointF2s(cm,Double) - dimension of transformed section in dir.(2)
 '   pointF3s(cm,Double) - dimension of transformed section in dir.(3)
-'   tempseccoord  - tempora
+'   tempseccoord  - temporary section coord.
 '----------------------------------------------------
 'Accelerate :
 '----------------------------------------------------
@@ -360,10 +360,10 @@ Function Mn(c As Variant, comp As Variant, comps As Variant, tendon As Variant, 
 '   c(cm,Double) - depth of neutral axis
 '   comp(2x1 array) - compressive force and center coord. of whitney block
 '   fy(kgf/cm2,integer) - yield strength of rebar
-'   comps(200x2 array,[N.T.S;kgf]) - compressive rebar strain and force
-'   tendon(200x2) array,[N.T.S;kgf]) - tension rebar strain and force of tranformed section
+'   comps(Nrx2 array,[N.T.S;kgf]) - compressive rebar strain and force
+'   tendon(Nrx2) array,[N.T.S;kgf]) - tension rebar strain and force of tranformed section
 '   M(Double,kgf-cm) - momnet integral , take compresion moment as positive
-'   rcoord(200x2 array) - coord. of raber location in seciton
+'   rcoord(Nrx2 array) - coord. of raber location in seciton
 'Declaration :
 Dim M As Variant 'Double
 Dim Nr As Integer, i As Integer
